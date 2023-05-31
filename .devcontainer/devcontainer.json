@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Node.js",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-20",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"installJupyterlab": true,
+			"version": "3.9"
+		},
+		"git-lfs": "latest",
+		"ghcr.io/guiyomh/features/vim:0": {}
+	},
+	
+	"hostRequirements": {
+		"memory": "8gb"
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [4242, 5173],
+	"portsAttributes": {
+		"4242": {
+			"label": "Inference"
+		},
+		"5173": {
+			"label": "Website"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/post_create.sh"
+}
